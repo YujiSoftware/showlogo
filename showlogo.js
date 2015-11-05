@@ -1,3 +1,6 @@
+var startTime;
+var intervalId;
+
 function wave(){
   var canvas = document.getElementById('dest');
   var src = document.getElementById('src');
@@ -10,9 +13,12 @@ function wave(){
   var dx = (canvas.clientWidth - src.naturalWidth) / 2;
   var dy = (canvas.clientHeight - src.naturalHeight) / 2;
   
+  var elapsedTime = new Date().getTime() - startTime;
+  var pitch = (elapsedTime / 5) % 360;
+  
   for(var i = 0; i < src.naturalHeight; i++){
-    ctx.drawImage(src, 0, i, src.naturalWidth, 1, dx + 15 * Math.sin((i * 10) * Math.PI / 180), dy + i, src.naturalWidth, 1);
+    ctx.drawImage(src, 0, i, src.naturalWidth, 1, dx + 15 * Math.sin((i * 10 + pitch) * Math.PI / 180), dy + i, src.naturalWidth, 1);
   }
 }
 
-document.addEventListener("DOMContentLoaded", function(){ wave(); });
+document.addEventListener("DOMContentLoaded", function(){ startTime = new Date().getTime(); intervalId = setInterval(wave, 10); });
