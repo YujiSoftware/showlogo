@@ -11,6 +11,10 @@
       border:1px solid #999999;
       margin:1em 0.5em;
     }
+    input {
+      height: 33px;
+      width: 105px;
+    }
   </style>
   <script type="text/javascript" src="showlogo.js"></script>
   
@@ -18,8 +22,10 @@
   </script>
 </head>
 <body>
-  <canvas height="154" width="284" id="dest"></canvas>
-  <img height="54" width="144" id="src" src="TEMP.PNG"/>
-  
+  <div>
+    <canvas height="154" width="284" id="dest"></canvas>
+    <img height="54" width="144" id="src" src="TEMP.PNG"/>
+  </div>
+  <input type="button" value="波形表示－横" />
 </body>
 </html>
