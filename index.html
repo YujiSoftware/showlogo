@@ -19,6 +19,22 @@
   <script type="text/javascript" src="showlogo.js"></script>
   
   <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(){
+      reset();
+      
+      var inputs = document.getElementsByTagName("input");
+      for(var i = 0; i < inputs.length; i++){
+        inputs[i].disabled = false;
+        inputs[i].addEventListener("click", run);
+      }
+    });
+    
+    function run(){
+      var func = window[this.id];
+    
+      startTime = new Date().getTime();
+      intervalId = setInterval(func, 10);
+    }
   </script>
 </head>
 <body>
@@ -26,6 +42,6 @@
     <canvas height="154" width="284" id="dest"></canvas>
     <img height="54" width="144" id="src" src="TEMP.PNG"/>
   </div>
-  <input type="button" value="波形表示－横" />
+  <input type="button" id="wave" value="波形表示－横" disabled="disabled"/>
 </body>
 </html>

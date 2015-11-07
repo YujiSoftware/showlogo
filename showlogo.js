@@ -6,9 +6,6 @@ function wave(){
   var src = document.getElementById('src');
   var ctx = canvas.getContext('2d');
   
-  ctx.fillStyle="#000000";
-  ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-
   // 出力先座標 (キャンバスの中央)
   var dx = (canvas.clientWidth - src.naturalWidth) / 2;
   var dy = (canvas.clientHeight - src.naturalHeight) / 2;
@@ -21,4 +18,11 @@ function wave(){
   }
 }
 
-document.addEventListener("DOMContentLoaded", function(){ startTime = new Date().getTime(); intervalId = setInterval(wave, 10); });
+function reset(){
+  var canvas = document.getElementById('dest');
+  var src = document.getElementById('src');
+  var ctx = canvas.getContext('2d');
+  
+  ctx.fillStyle="#000000";
+  ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+}
