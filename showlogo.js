@@ -18,6 +18,23 @@ function wave(){
   }
 }
 
+function verticalWave(){
+  var canvas = document.getElementById('dest');
+  var src = document.getElementById('src');
+  var ctx = canvas.getContext('2d');
+  
+  // 出力先座標 (キャンバスの中央)
+  var dx = (canvas.clientWidth - src.naturalWidth) / 2;
+  var dy = (canvas.clientHeight - src.naturalHeight) / 2;
+  
+  var elapsedTime = new Date().getTime() - startTime;
+  var pitch = (elapsedTime / 5) % 360;
+  
+  for(var i = 0; i < src.naturalWidth; i++){
+    ctx.drawImage(src, i, 0, 1, src.naturalHeight, dx + i, dy + 15 * Math.sin((i * 10 + pitch) * Math.PI / 180), 1, src.naturalHeight);
+  }
+}
+
 function reset(){
   var canvas = document.getElementById('dest');
   var src = document.getElementById('src');

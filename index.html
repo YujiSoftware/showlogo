@@ -30,8 +30,11 @@
     });
     
     function run(){
+      clearInterval(intervalId);
+      reset();
+      
       var func = window[this.id];
-    
+      
       startTime = new Date().getTime();
       intervalId = setInterval(func, 10);
     }
@@ -43,5 +46,6 @@
     <img height="54" width="144" id="src" src="TEMP.PNG"/>
   </div>
   <input type="button" id="wave" value="波形表示－横" disabled="disabled"/>
+  <input type="button" id="verticalWave" value="波形表示－縦" disabled="disabled"/>
 </body>
 </html>
