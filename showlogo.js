@@ -1,7 +1,7 @@
 var startTime;
 var intervalId;
 
-function wave(){
+function horizontalWave(){
   var canvas = document.getElementById('dest');
   var src = document.getElementById('src');
   var ctx = canvas.getContext('2d');
