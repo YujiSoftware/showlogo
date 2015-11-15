@@ -85,7 +85,7 @@ function slide(){
     ctx.drawImage(src, 0, i, src.naturalWidth, 1, offset - src.naturalWidth, dy + i, src.naturalWidth, 1);
   }
   for(var i = 1; i < src.naturalHeight; i += 2){
-    ctx.drawImage(src, 0, i, src.naturalWidth, 1, (src.naturalWidth * 2) - offset, dy + i, src.naturalWidth, 1);
+    ctx.drawImage(src, 0, i, src.naturalWidth, 1, canvas.clientWidth - offset, dy + i, src.naturalWidth, 1);
   }
 }
 
