@@ -62,6 +62,33 @@ function waterfall(){
   ctx.drawImage(src, 0, src.naturalHeight - height, src.naturalWidth, 1, dx, 0, src.naturalWidth, dy + src.naturalHeight - height);
 }
 
+function slide(){
+  var canvas = document.getElementById('dest');
+  var src = document.getElementById('src');
+  var ctx = canvas.getContext('2d');
+
+  reset();
+  
+  // 出力先座標 (キャンバスの中央)
+  var dx = (canvas.clientWidth - src.naturalWidth) / 2;
+  var dy = (canvas.clientHeight - src.naturalHeight) / 2;
+  
+  var now = new Date().getTime();
+  var offset = (now - startTime) / 8;
+  
+  if(dx + src.naturalWidth <= offset){
+    clearInterval(intervalId);
+    offset = dx + src.naturalWidth;
+  }
+
+  for(var i = 0; i < src.naturalHeight; i += 2){
+    ctx.drawImage(src, 0, i, src.naturalWidth, 1, offset - src.naturalWidth, dy + i, src.naturalWidth, 1);
+  }
+  for(var i = 1; i < src.naturalHeight; i += 2){
+    ctx.drawImage(src, 0, i, src.naturalWidth, 1, (src.naturalWidth * 2) - offset, dy + i, src.naturalWidth, 1);
+  }
+}
+
 function reset(){
   var canvas = document.getElementById('dest');
   var src = document.getElementById('src');
