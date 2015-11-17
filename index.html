@@ -20,8 +20,11 @@
   <script type="text/javascript" src="showlogo.js"></script>
   
   <script type="text/javascript">
+    var animation;
+    
     document.addEventListener("DOMContentLoaded", function(){
-      reset();
+      animation = new ShowLogo();
+      animation.reset();
       
       var inputs = document.getElementsByTagName("input");
       for(var i = 0; i < inputs.length; i++){
@@ -31,13 +34,8 @@
     });
     
     function run(){
-      clearInterval(intervalId);
-      reset();
-      
-      var func = window[this.id];
-      
-      startTime = new Date().getTime();
-      intervalId = setInterval(func, 10);
+      animation.stop();
+      animation.start(animation[this.id]);
     }
   </script>
 </head>
