@@ -7,7 +7,7 @@ ShowLogo.prototype = {
 
   start: function(func){
     this.startTime = new Date().getTime();
-    this.intervalId = setInterval(func, 10);
+    this.intervalId = setInterval(func.bind(this), 10);
   },
 
   horizontalWave: function(){
