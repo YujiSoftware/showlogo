@@ -6,8 +6,15 @@ ShowLogo.prototype = {
   intervalId: 0,
 
   start: function(func){
+    this.stop();
+    
     this.startTime = new Date().getTime();
     this.intervalId = setInterval(func.bind(this), 10);
+  },
+  
+  stop: function(){
+    this.reset();
+    clearInterval(this.intervalId);
   },
 
   horizontalWave: function(){
@@ -105,10 +112,5 @@ ShowLogo.prototype = {
     
     ctx.fillStyle="#000000";
     ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-  },
-  
-  stop: function(){
-    this.reset();
-    clearInterval(this.intervalId);
   }
 };
