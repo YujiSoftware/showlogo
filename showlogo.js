@@ -29,6 +29,8 @@ ShowLogo.prototype = {
   },
 
   horizontalWave: function(){
+    this.reset();
+    
     // 出力先座標 (キャンバスの中央)
     var dx = (this.canvas.clientWidth - this.src.naturalWidth) / 2;
     var dy = (this.canvas.clientHeight - this.src.naturalHeight) / 2;
