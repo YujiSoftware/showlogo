@@ -23,7 +23,7 @@
     var animation;
     
     document.addEventListener("DOMContentLoaded", function(){
-      animation = new ShowLogo();
+      animation = new ShowLogo(document.getElementById("dest"));
       animation.reset();
       
       var inputs = document.getElementsByTagName("input");
@@ -34,7 +34,7 @@
     });
     
     function run(){
-      animation.start(animation[this.id]);
+      animation.start(animation[this.id], document.getElementById("src"));
     }
   </script>
 </head>
