@@ -102,6 +102,30 @@ ShowLogo.prototype = {
     }
   },
 
+  slideAndWave: function(){
+    this.reset();
+    
+    // 出力先座標 (キャンバスの中央)
+    var dx = (this.canvas.clientWidth - this.src.naturalWidth) / 2;
+    var dy = (this.canvas.clientHeight - this.src.naturalHeight) / 2;
+    
+    var now = new Date().getTime();
+    var elapsedTime = now - this.startTime;
+    var time = 1200;
+    
+    if(time <= elapsedTime){
+      clearInterval(this.intervalId);
+      elapsedTime = time;
+    }
+    
+    for(var i = 0; i < this.src.naturalHeight; i += 2){
+      this.ctx.drawImage(this.src, 0, i, this.src.naturalWidth, 1, dx + (((time / 2) - elapsedTime / 2) / 15) * Math.sin((i * 10 + (elapsedTime / 1.5)) * Math.PI / 180), dy + i, this.src.naturalWidth, 1);
+    }
+    for(var i = 1; i < this.src.naturalHeight; i += 2){
+      this.ctx.drawImage(this.src, 0, i, this.src.naturalWidth, 1, dx + (((time / 2) - elapsedTime / 2) / 15) * Math.sin(-(i * 10 + (elapsedTime / 1.5)) * Math.PI / 180), dy + i, this.src.naturalWidth, 1);
+    }
+  },
+
   reset: function(){    
     this.ctx.fillStyle="#000000";
     this.ctx.fillRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
