@@ -119,10 +119,10 @@ ShowLogo.prototype = {
     }
     
     for(var i = 0; i < this.src.naturalHeight; i += 2){
-      this.ctx.drawImage(this.src, 0, i, this.src.naturalWidth, 1, dx + (((time / 2) - elapsedTime / 2) / 15) * Math.sin((i * 10 + (elapsedTime / 1.5)) * Math.PI / 180), dy + i, this.src.naturalWidth, 1);
+      this.ctx.drawImage(this.src, 0, i, this.src.naturalWidth, 1, dx + ((time - elapsedTime) / 30) * Math.sin((i * 10 + (elapsedTime / 1.5)) * Math.PI / 180), dy + i, this.src.naturalWidth, 1);
     }
     for(var i = 1; i < this.src.naturalHeight; i += 2){
-      this.ctx.drawImage(this.src, 0, i, this.src.naturalWidth, 1, dx + (((time / 2) - elapsedTime / 2) / 15) * Math.sin(-(i * 10 + (elapsedTime / 1.5)) * Math.PI / 180), dy + i, this.src.naturalWidth, 1);
+      this.ctx.drawImage(this.src, 0, i, this.src.naturalWidth, 1, dx + ((time - elapsedTime) / 30) * Math.sin(-(i * 10 + (elapsedTime / 1.5)) * Math.PI / 180), dy + i, this.src.naturalWidth, 1);
     }
   },
 
