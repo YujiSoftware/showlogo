@@ -142,7 +142,7 @@ ShowLogo.prototype = {
       elapsedTime = time;
     }
 
-    this.ctx.drawImage(this.src, 0, 0, this.src.naturalWidth, this.src.naturalHeight, elapsedTime / 20 * 1.4, elapsedTime / 20, this.src.naturalWidth * 2 - elapsedTime / 20 * 2.8, this.src.naturalHeight * 2 - elapsedTime / 40 * 2);
+    this.ctx.drawImage(this.src, 0, 0, this.src.naturalWidth, this.src.naturalHeight, elapsedTime / 20 * 1.4, elapsedTime / 20, this.src.naturalWidth * 2 - elapsedTime / 20 * 2.8, this.src.naturalHeight * 3 - elapsedTime / 20 * 2);
   },
 
   reset: function(){    
