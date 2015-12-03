@@ -145,6 +145,27 @@ ShowLogo.prototype = {
     this.ctx.drawImage(this.src, 0, 0, this.src.naturalWidth, this.src.naturalHeight, elapsedTime / 20 * 1.4, elapsedTime / 20, this.src.naturalWidth * 2 - elapsedTime / 20 * 2.8, this.src.naturalHeight * 3 - elapsedTime / 20 * 2);
   },
 
+  zoomIn: function(){
+    this.reset();
+
+    // 出力先座標 (キャンバスの中央)
+    var dx = (this.canvas.clientWidth - this.src.naturalWidth) / 2;
+    var dy = (this.canvas.clientHeight - this.src.naturalHeight) / 2;
+
+    var now = new Date().getTime();
+    var elapsedTime = now - this.startTime;
+    var time = 500;
+    
+    if(time <= elapsedTime){
+      clearInterval(this.intervalId);
+      elapsedTime = time;
+    }
+
+    var jotai = elapsedTime / 20;
+
+    this.ctx.drawImage(this.src, 0, 0, this.src.naturalWidth, this.src.naturalHeight, this.src.naturalWidth - jotai * 2.8, 75 - jotai, jotai * 5.6, jotai * 2);
+  },
+
   reset: function(){    
     this.ctx.fillStyle="#000000";
     this.ctx.fillRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
