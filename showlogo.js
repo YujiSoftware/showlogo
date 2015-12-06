@@ -166,6 +166,10 @@ ShowLogo.prototype = {
     this.ctx.drawImage(this.src, 0, 0, this.src.naturalWidth, this.src.naturalHeight, this.src.naturalWidth - jotai * 2.8, 75 - jotai, jotai * 5.6, jotai * 2);
   },
 
+  randomSlide: function(){
+    
+  },
+
   reset: function(){    
     this.ctx.fillStyle="#000000";
     this.ctx.fillRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
