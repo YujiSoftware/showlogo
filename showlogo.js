@@ -166,8 +166,38 @@ ShowLogo.prototype = {
     this.ctx.drawImage(this.src, 0, 0, this.src.naturalWidth, this.src.naturalHeight, this.src.naturalWidth - jotai * 2.8, 75 - jotai, jotai * 5.6, jotai * 2);
   },
 
+  slideX: null,
+
   randomSlide: function(){
+    if(this.slideX == null){
+      this.slideX = new Array();
+      for(var i = 0; i < this.src.naturalHeight; i++){
+        this.slideX[i] = i;
+      }
+
+      var random = this.slideX.map(Math.random);
+      this.slideX.sort(function(a, b) { return random[a] - random[b]; });
+    }
+
+    // 出力先座標 (キャンバスの中央)
+    var dx = (this.canvas.clientWidth - this.src.naturalWidth) / 2;
+    var dy = (this.canvas.clientHeight - this.src.naturalHeight) / 2;
+
+    var now = new Date().getTime();
+    var elapsedTime = now - this.startTime;
+    var time = 1000;
+
+    var jotai = elapsedTime / time * this.src.naturalHeight;
+
+    for(var i = 0; i < jotai; i++){
+      this.ctx.drawImage(this.src, 0, this.slideX[i], this.src.naturalWidth, 1, dx, dy + this.slideX[i], this.src.naturalWidth, 1);
+    }
     
+    if(time <= elapsedTime){
+      clearInterval(this.intervalId);
+      elapsedTime = time;
+      this.slideX = null;
+    }
   },
 
   reset: function(){    
