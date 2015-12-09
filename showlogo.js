@@ -200,6 +200,10 @@ ShowLogo.prototype = {
     }
   },
 
+  drawImage: function(image, sx, sy, sw, sh, dx, dy, dw, dh){
+    this.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
+  },
+
   reset: function(){    
     this.ctx.fillStyle="#000000";
     this.ctx.fillRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
