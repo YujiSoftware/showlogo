@@ -162,7 +162,7 @@ ShowLogo.prototype = {
     var elapsedTime = now - this.startTime;
     var time = 1000;
 
-    var jotai = elapsedTime / time * this.src.naturalHeight;
+    var jotai = elapsedTime / Math.max(time, elapsedTime) * this.src.naturalHeight;
 
     for(var i = 0; i < jotai; i++){
       this.ctx.drawImage(this.src, 0, this.slideX[i], this.src.naturalWidth, 1, this.position.dx, this.position.dy + this.slideX[i], this.src.naturalWidth, 1);
@@ -170,7 +170,6 @@ ShowLogo.prototype = {
     
     if(time <= elapsedTime){
       clearInterval(this.intervalId);
-      elapsedTime = time;
       this.slideX = null;
     }
   },
