@@ -13,6 +13,8 @@ ShowLogo.prototype = {
   initialize: function(canvas){
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
+
+    this.reset();
   },
 
   start: function(func, src){
