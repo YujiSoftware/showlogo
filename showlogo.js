@@ -176,6 +176,9 @@ ShowLogo.prototype = {
     }
   },
 
+  randomDot: function(){
+  },
+
   drawImage: function(image, sx, sy, sw, sh, dx, dy, dw, dh){
     this.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
   },
