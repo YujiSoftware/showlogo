@@ -175,8 +175,34 @@ ShowLogo.prototype = {
       this.slideX = null;
     }
   },
-
+  
   randomDot: function(){
+    if(this.slideX == null){
+      this.slideX = [];
+      for(var i = 0; i < 70; i++){
+        this.slideX[i] = i;
+      }
+      
+      var random = this.slideX.map(Math.random);
+      this.slideX.sort(function(a, b) { return random[a] - random[b]; });
+    }
+    
+    var now = new Date().getTime();
+    var elapsedTime = now - this.startTime;
+    var time = 1000;
+    
+    var jotai = elapsedTime / Math.max(time, elapsedTime) * 70;
+    
+    for(var i = 0; i < jotai; i++){
+      var x = 10 * (this.slideX[i] % 14);
+      var y = 10 * Math.floor(this.slideX[i] / 14, 10);
+      this.ctx.drawImage(this.src, x, y, 10, 10, this.position.dx + x, this.position.dy + y, 10, 10);
+    }
+    
+    if(time <= elapsedTime){
+      clearInterval(this.intervalId)
+      this.slideX = null;
+    }
   },
 
   drawImage: function(image, sx, sy, sw, sh, dx, dy, dw, dh){
